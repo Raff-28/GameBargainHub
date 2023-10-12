@@ -1,8 +1,8 @@
 package com.rafif.gamebargainhub.core.data.source.local
 
-import androidx.lifecycle.LiveData
 import com.rafif.gamebargainhub.core.data.source.local.entity.DealEntity
 import com.rafif.gamebargainhub.core.data.source.local.room.DealDao
+import kotlinx.coroutines.flow.Flow
 
 class LocalDataSource private constructor(private val dealDao: DealDao) {
     companion object {
@@ -14,11 +14,11 @@ class LocalDataSource private constructor(private val dealDao: DealDao) {
             }
     }
 
-    fun getAllDeal(): LiveData<List<DealEntity>> = dealDao.getAllDeal()
+    fun getAllDeal(): Flow<List<DealEntity>> = dealDao.getAllDeal()
 
-    fun getFavoriteDeal(): LiveData<List<DealEntity>> = dealDao.getFavoriteDeal()
+    fun getFavoriteDeal(): Flow<List<DealEntity>> = dealDao.getFavoriteDeal()
 
-    fun insertDeal(dealList: List<DealEntity>) = dealDao.insertDeal(dealList)
+    suspend fun insertDeal(dealList: List<DealEntity>) = dealDao.insertDeal(dealList)
 
     fun setFavoriteDeal(deal: DealEntity, newState: Boolean) {
         deal.isFavorite = newState

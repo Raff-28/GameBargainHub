@@ -1,7 +1,5 @@
 package com.rafif.gamebargainhub.core.data.source
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
 import com.rafif.gamebargainhub.core.data.source.local.LocalDataSource
 import com.rafif.gamebargainhub.core.data.source.remote.RemoteDataSource
 import com.rafif.gamebargainhub.core.data.source.remote.network.ApiResponse
@@ -10,6 +8,8 @@ import com.rafif.gamebargainhub.core.domain.model.Deal
 import com.rafif.gamebargainhub.core.domain.repository.DealRepository
 import com.rafif.gamebargainhub.core.utils.AppExecutors
 import com.rafif.gamebargainhub.core.utils.DataMapper
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 class DealRepositoryImpl private constructor(
     private val remoteDataSource: RemoteDataSource,
@@ -30,31 +30,27 @@ class DealRepositoryImpl private constructor(
             }
     }
 
-    override fun getAllDeal(): LiveData<Resource<List<Deal>>> =
-        object: NetworkBoundResource<List<Deal>, List<DealResponse>>(appExecutors) {
-            override fun loadFromDB(): LiveData<List<Deal>> {
-                return Transformations.map(localDataSource.getAllDeal()) {
-                    DataMapper.mapEntitiesToDomain(it)
-                }
+    override fun getAllDeal(): Flow<Resource<List<Deal>>> =
+        object: NetworkBoundResource<List<Deal>, List<DealResponse>>() {
+            override fun loadFromDB(): Flow<List<Deal>> {
+                return localDataSource.getAllDeal().map { DataMapper.mapEntitiesToDomain(it) }
             }
 
             override fun shouldFetch(data: List<Deal>?): Boolean =
                 data.isNullOrEmpty()
 //                true
 
-            override fun createCall(): LiveData<ApiResponse<List<DealResponse>>> =
+            override suspend fun createCall(): Flow<ApiResponse<List<DealResponse>>> =
                 remoteDataSource.getAllDeal()
 
-            override fun saveCallResult(data: List<DealResponse>) {
+            override suspend fun saveCallResult(data: List<DealResponse>) {
                 val dealList = DataMapper.mapResponsesToEntities(data)
                 localDataSource.insertDeal(dealList)
             }
-        }.asLiveData()
+        }.asFlow()
 
-    override fun getFavoriteDeal(): LiveData<List<Deal>> {
-        return Transformations.map(localDataSource.getFavoriteDeal()) {
-            DataMapper.mapEntitiesToDomain(it)
-        }
+    override fun getFavoriteDeal(): Flow<List<Deal>> {
+        return localDataSource.getFavoriteDeal().map { DataMapper.mapEntitiesToDomain(it) }
     }
 
     override fun setFavoriteDeal(deal: Deal, state: Boolean) {
