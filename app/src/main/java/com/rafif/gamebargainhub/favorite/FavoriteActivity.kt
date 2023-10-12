@@ -6,25 +6,18 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rafif.gamebargainhub.MyApplication
 import com.rafif.gamebargainhub.core.ui.DealsAdapter
-import com.rafif.gamebargainhub.core.ui.ViewModelFactory
 import com.rafif.gamebargainhub.databinding.ActivityFavoriteBinding
 import com.rafif.gamebargainhub.detail_deal.DetailDealActivity
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FavoriteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityFavoriteBinding
-
-    @Inject
-    lateinit var factory: ViewModelFactory
-    private val favoriteViewModel: FavoriteViewModel by viewModels {
-        factory
-    }
+    private val favoriteViewModel: FavoriteViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        (application as MyApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         binding = ActivityFavoriteBinding.inflate(layoutInflater)
         setContentView(binding.root)

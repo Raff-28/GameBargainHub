@@ -8,16 +8,15 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
-import com.rafif.gamebargainhub.MyApplication
 import com.rafif.gamebargainhub.R
 import com.rafif.gamebargainhub.core.domain.model.Deal
-import com.rafif.gamebargainhub.core.ui.ViewModelFactory
 import com.rafif.gamebargainhub.core.utils.StringUtils.getStoreName
 import com.rafif.gamebargainhub.databinding.ActivityDetailDealBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Date
-import javax.inject.Inject
 
+@AndroidEntryPoint
 class DetailDealActivity : AppCompatActivity() {
 
     companion object {
@@ -25,15 +24,9 @@ class DetailDealActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityDetailDealBinding
-
-    @Inject
-    lateinit var factory: ViewModelFactory
-    private val detailDealViewModel: DetailDealViewModel by viewModels {
-        factory
-    }
+    private val detailDealViewModel: DetailDealViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        (application as MyApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         binding = ActivityDetailDealBinding.inflate(layoutInflater)
         setContentView(binding.root)

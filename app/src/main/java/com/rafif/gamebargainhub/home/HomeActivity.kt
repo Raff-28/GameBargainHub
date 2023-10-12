@@ -8,28 +8,21 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rafif.gamebargainhub.MyApplication
 import com.rafif.gamebargainhub.R
 import com.rafif.gamebargainhub.core.data.source.Resource
 import com.rafif.gamebargainhub.core.ui.DealsAdapter
-import com.rafif.gamebargainhub.core.ui.ViewModelFactory
 import com.rafif.gamebargainhub.databinding.ActivityHomeBinding
 import com.rafif.gamebargainhub.detail_deal.DetailDealActivity
 import com.rafif.gamebargainhub.favorite.FavoriteActivity
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-
-    @Inject
-    lateinit var factory: ViewModelFactory
-    private val homeViewModel: HomeViewModel by viewModels {
-        factory
-    }
+    private val homeViewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        (application as MyApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)

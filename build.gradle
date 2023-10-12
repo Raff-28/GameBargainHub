@@ -4,8 +4,10 @@ buildscript {
     ext.activity_ktx_version = "1.1.0"
     ext.fragment_ktx_version = "1.2.5"
 
+    ext.hilt_version = '2.36'
+
     dependencies {
-//        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.44.2'
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.44.2'
     }
 }
 
