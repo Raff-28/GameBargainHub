@@ -27,8 +27,8 @@ class DealRepositoryImpl @Inject constructor(
             }
 
             override fun shouldFetch(data: List<Deal>?): Boolean =
-                data.isNullOrEmpty()
-//                true
+//                data.isNullOrEmpty()
+                true
 
             override suspend fun createCall(): Flow<ApiResponse<List<DealResponse>>> =
                 remoteDataSource.getAllDeal()

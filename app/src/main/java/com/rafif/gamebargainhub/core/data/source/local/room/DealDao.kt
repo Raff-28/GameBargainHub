@@ -16,7 +16,7 @@ interface DealDao {
     @Query("SELECT * FROM deal WHERE isFavorite = 1")
     fun getFavoriteDeal(): Flow<List<DealEntity>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertDeal(deal: List<DealEntity>)
 
     @Update
