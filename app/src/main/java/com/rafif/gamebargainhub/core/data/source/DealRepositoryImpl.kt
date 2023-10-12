@@ -10,25 +10,15 @@ import com.rafif.gamebargainhub.core.utils.AppExecutors
 import com.rafif.gamebargainhub.core.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class DealRepositoryImpl private constructor(
+@Singleton
+class DealRepositoryImpl @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors,
 ) : DealRepository {
-    companion object {
-        @Volatile
-        private var instance: DealRepositoryImpl? = null
-
-        fun getInstance(
-            remoteData: RemoteDataSource,
-            localData: LocalDataSource,
-            appExecutors: AppExecutors,
-        ): DealRepositoryImpl =
-            instance ?: synchronized(this) {
-                instance ?: DealRepositoryImpl(remoteData, localData, appExecutors)
-            }
-    }
 
     override fun getAllDeal(): Flow<Resource<List<Deal>>> =
         object: NetworkBoundResource<List<Deal>, List<DealResponse>>() {

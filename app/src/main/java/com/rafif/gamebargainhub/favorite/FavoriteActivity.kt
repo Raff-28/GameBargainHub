@@ -3,20 +3,28 @@ package com.rafif.gamebargainhub.favorite
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.rafif.gamebargainhub.MyApplication
 import com.rafif.gamebargainhub.core.ui.DealsAdapter
 import com.rafif.gamebargainhub.core.ui.ViewModelFactory
 import com.rafif.gamebargainhub.databinding.ActivityFavoriteBinding
 import com.rafif.gamebargainhub.detail_deal.DetailDealActivity
+import javax.inject.Inject
 
 class FavoriteActivity : AppCompatActivity() {
 
-    private lateinit var favoriteViewModel: FavoriteViewModel
     private lateinit var binding: ActivityFavoriteBinding
 
+    @Inject
+    lateinit var factory: ViewModelFactory
+    private val favoriteViewModel: FavoriteViewModel by viewModels {
+        factory
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        (application as MyApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         binding = ActivityFavoriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -29,9 +37,6 @@ class FavoriteActivity : AppCompatActivity() {
             intent.putExtra(DetailDealActivity.EXTRA_DATA, selectedDeal)
             startActivity(intent)
         }
-
-        val factory = ViewModelFactory.getInstance(this)
-        favoriteViewModel = ViewModelProvider(this, factory)[FavoriteViewModel::class.java]
 
         favoriteViewModel.favoriteDeals.observe(this) { deals ->
             dealsAdapter.setData(deals)

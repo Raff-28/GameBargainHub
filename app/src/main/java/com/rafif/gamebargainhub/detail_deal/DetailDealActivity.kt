@@ -4,17 +4,19 @@ import android.content.Intent
 import android.graphics.Paint
 import android.net.Uri
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.rafif.gamebargainhub.MyApplication
 import com.rafif.gamebargainhub.R
 import com.rafif.gamebargainhub.core.domain.model.Deal
 import com.rafif.gamebargainhub.core.ui.ViewModelFactory
-import com.rafif.gamebargainhub.databinding.ActivityDetailDealBinding
 import com.rafif.gamebargainhub.core.utils.StringUtils.getStoreName
+import com.rafif.gamebargainhub.databinding.ActivityDetailDealBinding
 import java.text.SimpleDateFormat
 import java.util.Date
+import javax.inject.Inject
 
 class DetailDealActivity : AppCompatActivity() {
 
@@ -22,18 +24,21 @@ class DetailDealActivity : AppCompatActivity() {
         const val EXTRA_DATA = "extra_data"
     }
 
-    private lateinit var detailDealViewModel: DetailDealViewModel
     private lateinit var binding: ActivityDetailDealBinding
 
+    @Inject
+    lateinit var factory: ViewModelFactory
+    private val detailDealViewModel: DetailDealViewModel by viewModels {
+        factory
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        (application as MyApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         binding = ActivityDetailDealBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
-
-        val factory = ViewModelFactory.getInstance(this)
-        detailDealViewModel = ViewModelProvider(this, factory)[DetailDealViewModel::class.java]
 
         val detailDeal = intent.getParcelableExtra<Deal>(EXTRA_DATA)
 
