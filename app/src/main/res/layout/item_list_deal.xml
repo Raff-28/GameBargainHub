@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/CardView.Light"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="4dp"
+    app:cardCornerRadius="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_item_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/white"
+            android:contentDescription="@string/deal_image_description"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="H,1.5:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#7F000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/top_space" />
+
+        <Space
+            android:id="@+id/top_space"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_item_title"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_item_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="#FFFFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/tv_item_subtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Deus Ex: Human Revolution - Director's Cut" />
+
+        <TextView
+            android:id="@+id/tv_item_subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#FFFFFFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_item_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Currently on sale at Steam" />
+
+        <View
+            android:id="@+id/background_1"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:background="#29465B"
+            app:layout_constraintTop_toBottomOf="@id/background_2"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <View
+            android:id="@+id/background_2"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:background="#008631"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_savings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="-100%"
+            android:textSize="24sp"
+            android:textColor="#90EE90"
+            app:layout_constraintTop_toTopOf="@id/background_2"
+            app:layout_constraintBottom_toBottomOf="@id/background_2"
+            app:layout_constraintStart_toStartOf="@id/background_2"
+            app:layout_constraintEnd_toEndOf="@id/background_2"/>
+        <TextView
+            android:id="@+id/tv_normal_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="12sp"
+            android:textColor="#B3FFFFFF"
+            tools:text="19.99$"
+            app:layout_constraintStart_toStartOf="@id/background_1"
+            app:layout_constraintEnd_toEndOf="@id/background_1"
+            app:layout_constraintTop_toTopOf="@id/background_1"
+            app:layout_constraintBottom_toTopOf="@id/tv_sale_price" />
+
+        <TextView
+            android:id="@+id/tv_sale_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="	#90EE90"
+            tools:text="2.99$"
+            app:layout_constraintStart_toStartOf="@id/background_1"
+            app:layout_constraintEnd_toEndOf="@id/background_1"
+            app:layout_constraintTop_toBottomOf="@id/tv_normal_price"
+            app:layout_constraintBottom_toBottomOf="@id/background_1"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
