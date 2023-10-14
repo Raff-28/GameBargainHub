@@ -8,5 +8,6 @@
     <string name="metacritic_score">Metacritic Score:</string>
     <string name="check_at_store">Check at Store</string>
     <string name="favorite">Favorite</string>
+    <string name="title_favorite">Favorite</string>
 
 </resources>

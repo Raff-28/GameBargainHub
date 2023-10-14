@@ -1,24 +1,17 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.dynamic-feature'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-parcelize'
     id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
 }
 
 apply from: '../shared_dependencies.gradle'
 
 android {
-    namespace 'com.rafif.gamebargainhub'
+    namespace 'com.rafif.gamebargainhub.favorite'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.rafif.gamebargainhub"
         minSdk 24
-        targetSdk 33
-        versionCode 1
-        versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -35,13 +28,12 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
-
     buildFeatures {
-        viewBinding true
+        viewBinding = true
     }
-    dynamicFeatures = [':favorite']
 }
 
 dependencies {
     implementation project(":core")
+    implementation project(":app")
 }
