@@ -21,18 +21,20 @@
             android:textStyle="bold"
             tools:text="12.99$"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tv_sale_price"/>
 
         <TextView
             android:id="@+id/tv_normal_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             android:textSize="20sp"
             tools:text="24.99$"
             app:layout_constraintTop_toBottomOf="@id/tv_sale_price"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_savings"
+            app:layout_constraintBottom_toTopOf="@id/tv_game_deal_title"/>
 
         <View
             android:id="@+id/background_1"
@@ -51,21 +53,9 @@
             android:textColor="#90EE90"
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@id/tv_normal_price"
-            app:layout_constraintTop_toTopOf="@id/tv_normal_price"
-            android:layout_marginStart="24dp" />
-
-        <Button
-            android:id="@+id/btn_check_store"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:text="@string/check_at_store"
-            android:background="@drawable/btn_background_1"
-            android:foreground="?android:attr/selectableItemBackground"
-            app:layout_constraintStart_toEndOf="@id/tv_savings"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_sale_price"
-            app:layout_constraintBottom_toBottomOf="@id/background_1"
-            android:layout_marginStart="24dp"/>
+            app:layout_constraintBottom_toTopOf="@id/tv_game_deal_title"
+            android:layout_marginStart="24dp" />
 
         <TextView
             android:id="@+id/tv_game_deal_title"
@@ -77,10 +67,11 @@
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/background_1"
+            app:layout_constraintBottom_toTopOf="@id/divider_1"
             tools:text="WHALE ROCK SHOOTER (2020)" />
         <View
             android:id="@+id/divider_1"
-            android:layout_width="390dp"
+            android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#40000000"
             app:layout_constraintStart_toStartOf="parent"
@@ -162,7 +153,7 @@
 
         <View
             android:id="@+id/divider_2"
-            android:layout_width="390dp"
+            android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#40000000"
             app:layout_constraintStart_toStartOf="parent"
@@ -185,8 +176,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tv_metacritic_score_header"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_metacritic_score_header"
+            app:layout_constraintEnd_toEndOf="@id/tv_metacritic_score_header"
             app:layout_constraintBottom_toTopOf="@id/divider_3">
             <ImageView
                 android:id="@+id/iv_metacritic_score"
@@ -212,13 +203,25 @@
 
         <View
             android:id="@+id/divider_3"
-            android:layout_width="220dp"
+            android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#40000000"
             android:layout_marginTop="12dp"
             app:layout_constraintTop_toBottomOf="@id/metacritic_layout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+
+        <Button
+            android:id="@+id/btn_check_store"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/check_at_store"
+            android:background="@drawable/btn_background_1"
+            app:layout_constraintTop_toBottomOf="@id/divider_3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="16dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

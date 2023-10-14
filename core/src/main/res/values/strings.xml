@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="deal_image_description">Deal Thumbnail</string>
+    <string name="item_subtitle">Currently on sale at %1$s</string>
+    <string name="item_price">%1$s$</string>
+    <string name="item_savings">-%1$s%%</string>
+    <string name="detail_savings">%1$s%% off</string>
+    <string name="game_deal_with_year">%1$s (%2$s)</string>
+    <string name="steam_reviews_number_format">(%1$s%% of %2$s reviews)</string>
+</resources>
