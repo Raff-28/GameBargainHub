@@ -1,7 +1,9 @@
 package com.rafif.gamebargainhub.core.data.source.remote.response_model
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
+@Keep
 data class DealResponse(
 
 	@field:SerializedName("gameID")
