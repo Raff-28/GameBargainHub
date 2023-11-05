@@ -42,7 +42,7 @@ class HomeActivity : AppCompatActivity() {
                     is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
                     is Resource.Success -> {
                         binding.progressBar.visibility = View.GONE
-                        dealsAdapter.setData(deals.data)
+                        dealsAdapter.submitList(deals.data)
                     }
                     is Resource.Error -> {
                         binding.progressBar.visibility = View.GONE
