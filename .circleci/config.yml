@@ -1,15 +1,11 @@
 version: 2.1
 
 orbs:
-  android: circleci/android@0.2.1
+  android: circleci/android@2.3.0
 
 jobs:
   build:
-    docker:
-      - image: circleci/android:api-25-alpha
     executor: android/android
-    environment:
-      ANDROID_HOME: /home/circleci/android-sdk
     steps:
       - checkout
       - restore_cache:
