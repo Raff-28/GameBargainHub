@@ -14,12 +14,6 @@ jobs:
           name: Chmod permissions
           command: sudo chmod +x ./gradlew
       - run:
-          name: Add Google Cloud SDK public key
-          command: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-      - run:
-          name: Install Java alternative
-          command: sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/java-17-openjdk-amd64/bin/java 1
-      - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
       - save_cache:
