@@ -5,6 +5,8 @@ orbs:
 
 jobs:
   build:
+    docker:
+      - image: cimg/openjdk:17.0.8
     executor: android/android
     steps:
       - checkout
@@ -13,14 +15,6 @@ jobs:
       - run:
           name: Chmod permissions
           command: sudo chmod +x ./gradlew
-      - run:
-          name: Install OpenJDK 17
-          command: |
-            wget https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.tar.gz
-            sudo tar -xvf jdk-17_linux-x64_bin.tar.gz -C /opt
-            sudo update-alternatives --install /usr/bin/java java /opt/jdk-17/bin/java 100
-            sudo update-alternatives --install /usr/bin/javac javac /opt/jdk-17/bin/javac 100
-            java -version
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
