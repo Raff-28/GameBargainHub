@@ -50,7 +50,7 @@ class FavoriteActivity : AppCompatActivity() {
         }
 
         favoriteViewModel.favoriteDeals.observe(this) { deals ->
-            dealsAdapter.setData(deals)
+            dealsAdapter.submitList(deals)
             binding.viewEmpty.root.visibility = if (deals.isNotEmpty()) View.GONE else View.VISIBLE
         }
 
