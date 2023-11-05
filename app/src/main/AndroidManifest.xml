@@ -20,9 +20,6 @@
             android:exported="false"
             android:theme="@style/Theme.GameBargainHub.NoActionBar"/>
         <activity
-            android:name=".favorite.FavoriteActivity"
-            android:exported="false" />
-        <activity
             android:name=".home.HomeActivity"
             android:exported="true">
             <intent-filter>

@@ -15,3 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "GameBargainHub"
 include ':app'
+include ':core'
+include ':favorite'

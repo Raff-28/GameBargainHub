@@ -8,7 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
-import com.rafif.gamebargainhub.R
+import com.rafif.gamebargainhub.core.R
 import com.rafif.gamebargainhub.core.domain.model.Deal
 import com.rafif.gamebargainhub.core.utils.StringUtils.getStoreName
 import com.rafif.gamebargainhub.databinding.ActivityDetailDealBinding

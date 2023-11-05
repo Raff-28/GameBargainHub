@@ -1,6 +1,7 @@
 package com.rafif.gamebargainhub.home
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -13,7 +14,6 @@ import com.rafif.gamebargainhub.core.data.source.Resource
 import com.rafif.gamebargainhub.core.ui.DealsAdapter
 import com.rafif.gamebargainhub.databinding.ActivityHomeBinding
 import com.rafif.gamebargainhub.detail_deal.DetailDealActivity
-import com.rafif.gamebargainhub.favorite.FavoriteActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -70,8 +70,8 @@ class HomeActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_favorite -> {
-                val intent = Intent(this@HomeActivity, FavoriteActivity::class.java)
-                startActivity(intent)
+                val uri = Uri.parse("gamebargainhub://favorite")
+                startActivity(Intent(Intent.ACTION_VIEW, uri))
                 return super.onOptionsItemSelected(item)
             }
         }
