@@ -6,8 +6,10 @@ orbs:
 jobs:
   build:
     docker:
-      - image: cimg/openjdk:17.0.8
+      - image: circleci/android:api-25-alpha
     executor: android/android
+    environment:
+      ANDROID_HOME: /home/circleci/android-sdk
     steps:
       - checkout
       - restore_cache:
