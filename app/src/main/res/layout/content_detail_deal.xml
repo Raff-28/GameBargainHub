@@ -80,6 +80,7 @@
             android:layout_marginTop="16dp" />
 
         <ImageView
+            android:contentDescription="@string/offered_by"
             android:id="@+id/iv_offered_by"
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -112,6 +113,7 @@
             android:layout_marginBottom="16dp"/>
 
         <ImageView
+            android:contentDescription="@string/steam_logo"
             android:id="@+id/iv_steam_reviews"
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -180,6 +182,7 @@
             app:layout_constraintEnd_toEndOf="@id/tv_metacritic_score_header"
             app:layout_constraintBottom_toTopOf="@id/divider_3">
             <ImageView
+                android:contentDescription="@string/metacritic_logo"
                 android:id="@+id/iv_metacritic_score"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
